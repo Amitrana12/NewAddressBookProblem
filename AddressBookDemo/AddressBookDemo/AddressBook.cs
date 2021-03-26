@@ -18,7 +18,16 @@ namespace AddressBookDemo
             contact.Email = email;
             contact.Zip = zip;
             contact.PhoneNumber = phoneNumber;
-            addressBook.Add(contact.FirstName, contact);
+            try { addressBook.Add(contact.FirstName, contact);
+
+                /*throw new Exception("Soory This Name Data Already Present");*/
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Program.AddcontactConsole();
+            }
+           
         }
         public void ViewContact()
         {
