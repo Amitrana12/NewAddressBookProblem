@@ -7,15 +7,15 @@ namespace AddressBookDemo
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome To My Address Book Problem Solution By Amit Rana");
-           
+
             /*addressBook.AddContact("Amit", "Rana", "Uttarakhand", "Rishikesh", "UK", "amirana14325@gmail.com", 495698, 8979325434);
             addressBook.AddContact("Sumit", "Rana", "Uttarakhand", "Rishikesh", "UK", "amirana14325@gmail.com", 495698, 8979325434);*/
             Program.AddcontactConsole();
 
 
-           
+
         }
-        public static void  AddcontactConsole()
+        public static void AddcontactConsole()
         {
             AddressBook addressBook = new AddressBook();
             Console.WriteLine("Enter First Name :");
@@ -36,6 +36,9 @@ namespace AddressBookDemo
             long phoneNumber = Convert.ToInt64(Console.ReadLine());
             addressBook.AddContact(firstName, lastName, address, city, state, email, zip, phoneNumber);
             addressBook.ViewContact();
+            addressBook.EditContact(firstName);
+            addressBook.ViewContact();
         }
+        
     }
 }
