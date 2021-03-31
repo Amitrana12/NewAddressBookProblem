@@ -9,6 +9,7 @@ namespace AddressBookDemo
             Console.WriteLine("Welcome To My Address Book Problem Solution By Amit Rana");
             Program.AddcontactConsole();
         }
+
         public static void AddcontactConsole()
         {
             AddressBook addressBook = new AddressBook();

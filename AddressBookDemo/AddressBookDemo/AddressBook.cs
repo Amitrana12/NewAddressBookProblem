@@ -108,7 +108,7 @@ namespace AddressBookDemo
                             item.Value.PhoneNumber = Convert.ToInt64(Console.ReadLine());
                             break;
                     }
-                    Console.WriteLine("\nEdited Successfully.\n");
+                    Console.WriteLine("\n Thankyou Edited Successfully.\n");
                 }
             }
         }
@@ -118,11 +118,11 @@ namespace AddressBookDemo
             if (addressBook.ContainsKey(name))
             {
                 addressBook.Remove(name);
-                Console.WriteLine("\nDeleted Succesfully.\n");
+                Console.WriteLine("\nDeleted Succesfully.(-_-)\n");
             }
             else
             {
-                Console.WriteLine("\nNot Found, Try Again.\n");
+                Console.WriteLine("\nData Not Found! Please Try Again.\n");
             }
         }
     }
