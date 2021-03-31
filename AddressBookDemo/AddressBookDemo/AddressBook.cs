@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace AddressBookDemo
 {
-    internal class AddressBook : IContacts
+    public class AddressBook : IContacts
     {
         private Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();
-
+        
         public void AddContact(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNumber)
         {
             Contact contact = new Contact();
@@ -18,17 +18,35 @@ namespace AddressBookDemo
             contact.Email = email;
             contact.Zip = zip;
             contact.PhoneNumber = phoneNumber;
-            try { addressBook.Add(contact.FirstName, contact);
-
-                /*throw new Exception("Soory This Name Data Already Present");*/
+            try { 
+                addressBook.Add(contact.FirstName, contact);
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Program.AddcontactConsole();
             }
-           
+            Console.WriteLine("\nAdded Succesfully. \n");
         }
+
+        public void ViewContact(string name)
+        {
+            foreach (KeyValuePair<string, Contact> item in addressBook)
+            {
+                if (item.Key.Equals(name))
+                {
+                    Console.WriteLine("First Name : " + item.Value.FirstName);
+                    Console.WriteLine("Last Name : " + item.Value.LastName);
+                    Console.WriteLine("Address : " + item.Value.Address);
+                    Console.WriteLine("City : " + item.Value.City);
+                    Console.WriteLine("State : " + item.Value.State);
+                    Console.WriteLine("Email : " + item.Value.Email);
+                    Console.WriteLine("Zip : " + item.Value.Zip);
+                    Console.WriteLine("Phone Number : " + item.Value.PhoneNumber + "\n");
+                }
+            }
+        }
+
         public void ViewContact()
         {
             foreach (KeyValuePair<string, Contact> item in addressBook)
@@ -45,6 +63,7 @@ namespace AddressBookDemo
                 Console.WriteLine("Phone Number : " + item.Value.PhoneNumber + "\n");
             }
         }
+
         public void EditContact(string name)
         {
             foreach (KeyValuePair<string, Contact> item in addressBook)
@@ -56,8 +75,9 @@ namespace AddressBookDemo
                     switch (choice)
                     {
                         case 1:
+                            
                             Console.WriteLine("Enter New First Name :");
-                            item.Value.FirstName = Console.ReadLine();
+                            item.Value.FirstName = Console.ReadLine();  
                             break;
                         case 2:
                             Console.WriteLine("Enter New Last Name :");
@@ -88,7 +108,21 @@ namespace AddressBookDemo
                             item.Value.PhoneNumber = Convert.ToInt64(Console.ReadLine());
                             break;
                     }
+                    Console.WriteLine("\nEdited Successfully.\n");
                 }
+            }
+        }
+
+        public void DeleteContact(string name)
+        {
+            if (addressBook.ContainsKey(name))
+            {
+                addressBook.Remove(name);
+                Console.WriteLine("\nDeleted Succesfully.\n");
+            }
+            else
+            {
+                Console.WriteLine("\nNot Found, Try Again.\n");
             }
         }
     }
