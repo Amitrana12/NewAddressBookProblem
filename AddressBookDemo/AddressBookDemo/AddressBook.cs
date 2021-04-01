@@ -198,7 +198,7 @@ namespace AddressBookDemo
             {
                 foreach (Contact contact in addressBookObj.addressBook.Values)
                 {
-                    addressBookObj.cityDictionary.Add(contact, contact.City);
+                    addressBookObj.cityDictionary.TryAdd(contact, contact.City);
                 }
             }
         }
@@ -208,8 +208,53 @@ namespace AddressBookDemo
             {
                 foreach (Contact contact in addressBookObj.addressBook.Values)
                 {
-                    addressBookObj.stateDictionary.Add(contact, contact.State);
+                    addressBookObj.stateDictionary.TryAdd(contact, contact.State);
                 }
+            }
+        }
+        public void DisplayCountByCityandState()
+        {
+            CreateCityDictionary();
+            CreateStateDictionary();
+            Dictionary<string, int> countByCity = new Dictionary<string, int>();
+            Dictionary<string, int> countByState = new Dictionary<string, int>();
+            Console.WriteLine("enter which type of count you want \n1.count City wise \n2.count State wise ");
+            int choise = Convert.ToInt32(Console.ReadLine());
+            switch (choise)
+            {
+                case 1:
+                    foreach (var obj in addressBookDictionary.Values)
+                    {
+                        foreach (var person in obj.cityDictionary)
+                        {
+                            countByCity.TryAdd(person.Value, 0);
+                            countByCity[person.Value]++;
+                        }
+                    }
+
+                    Console.WriteLine(" count City wise :");
+                    foreach (var person in countByCity)
+                    {
+                        Console.WriteLine(person.Key + ":" + person.Value);
+                    }
+                    break;
+
+
+                case 2:
+                    foreach (var obj in addressBookDictionary.Values)
+                    {
+                        foreach (var person in obj.stateDictionary)
+                        {
+                            countByState.TryAdd(person.Value, 0);
+                            countByState[person.Value]++;
+                        }
+                    }
+                    Console.WriteLine(" count State wise:");
+                    foreach (var person in countByState)
+                    {
+                        Console.WriteLine(person.Key + ":" + person.Value);
+                    }
+                    break;
             }
         }
     }

@@ -32,7 +32,7 @@ namespace AddressBookDemo
             do
             {
                 Console.WriteLine($"Working On {bookName} AddressBook\n");
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search contact by city or state \n0.exit Application\n");
+                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search contact by city or state \n9.Count by City Or State \n0.exit Application\n");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -130,12 +130,15 @@ namespace AddressBookDemo
                                 addressBook.SearchPersonByState(Console.ReadLine());
                                 break;
                             default:
-                                Console.WriteLine("Invalid Input.Enter 1 or 2");
+                                Console.WriteLine(" Ooppzz!! Enter only 1 or 2");
                                 break;
                         }
                         break;
+                    case 9:
+                        addressBook.DisplayCountByCityandState();
+                        break;
                     default:
-                        Console.WriteLine("Invalid Entry. Enter value between 0 to 7");
+                        Console.WriteLine("Sorry!!! Invalid Entry");
                         break;
                 }
             } while (choice != 0);
