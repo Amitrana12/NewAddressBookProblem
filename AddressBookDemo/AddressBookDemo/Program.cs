@@ -36,7 +36,7 @@ namespace AddressBookDemo
             do
             {
                 Console.WriteLine($"Working On {bookName} AddressBook\n");
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search contact by city or state \n9.Count by City Or State \n10.Sort Data By name \n11.write and read data into .Text file\n0.exit Application\n");
+                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search contact by city or state \n9.Count by City Or State \n10.Sort Data By name \n11.write and read data into .Text file \n12.write and read data into .CSV file \n0.exit Application\n");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -48,7 +48,11 @@ namespace AddressBookDemo
                         string firstName = Console.ReadLine();
                         Console.WriteLine("Enter Last Name :");
                         string lastName = Console.ReadLine();
-                        Contact temp = new Contact(firstName, lastName, null, null, null, null, 0, 0);
+                        Contact temp = new Contact()
+                        {
+                            FirstName = firstName,
+                            LastName = lastName
+                        };
                         if (addressBook.CheckDuplicateEntry(temp, bookName))
                         {
                             Console.WriteLine("sorry already person exit");
@@ -167,6 +171,11 @@ namespace AddressBookDemo
                         FileIOOperation fileIO = new FileIOOperation();
                         fileIO.WriteToFile(addressBook.addressBookDictionary);
                         fileIO.ReadFromFile();
+                        break;
+                    case 12:
+                        CSVHandler handler = new CSVHandler();
+                        handler.WriteToFile(addressBook.addressBookDictionary);
+                        handler.ReadFromFile();
                         break;
                     default:
                         Console.WriteLine("Sorry!!! Invalid Entry");

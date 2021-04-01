@@ -1,8 +1,16 @@
 First Name :Amit
-Last Name : rana
+Last Name : Rana
 City : Rishikesh
 State : UK
-Email : amirana@gamil.com
-Zip : 325461
+Email : amirana@gmail.com
+Zip : 234566
 Phone Number : 8979325434
+
+First Name :Sumit
+Last Name : Semwal
+City : Rishikesh
+State : UK
+Email : sumitsemwal@gamil.com
+Zip : 235645
+Phone Number : 8171945903
 

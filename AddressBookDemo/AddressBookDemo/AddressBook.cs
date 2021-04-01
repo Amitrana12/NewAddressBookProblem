@@ -16,7 +16,17 @@ namespace AddressBookDemo
             
            
             try {
-                Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
+                Contact contact = new Contact
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Address = address,
+                    City = city,
+                    State = state,
+                    Email = email,
+                    Zip = zip,
+                    PhoneNumber = phoneNumber
+                };
                 addressBookDictionary[bookName].addressBook.Add(contact.FirstName + " " + contact.LastName, contact);
                 Console.WriteLine("\nAdded Succesfully. \n");
             }
