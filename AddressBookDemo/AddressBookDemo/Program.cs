@@ -15,7 +15,7 @@ namespace AddressBookDemo
         {
             AddressBook addressBook = new AddressBook();
             int choice, choice2;
-            string bookName = "Same";
+            string bookName = "Rough";
             Console.WriteLine("Would You Like To \n1.Create New AddressBook \n2.Work on Same AddressBook");
             choice2 = Convert.ToInt32(Console.ReadLine());
             switch (choice2)
@@ -26,6 +26,10 @@ namespace AddressBookDemo
                     addressBook.AddAddressBook(bookName);                    
                     break;
                 case 2:
+                    addressBook.AddAddressBook(bookName);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Input, Proceeding with default AddressBook");
                     addressBook.AddAddressBook(bookName);
                     break;
             }
@@ -138,7 +142,26 @@ namespace AddressBookDemo
                         addressBook.DisplayCountByCityandState();
                         break;
                     case 10:
-                        addressBook.SortByName();
+                        Console.WriteLine("\n1.Sort By Name \n2.Sort By City \n3.Sort By State \n4.Sort By Zip");
+                        int ch = Convert.ToInt32(Console.ReadLine());
+                        switch (ch)
+                        {
+                            case 1:
+                                addressBook.SortByName();
+                                break;
+                            case 2:
+                                addressBook.SortByCity();
+                                break;
+                            case 3:
+                                addressBook.SortByState();
+                                break;
+                            case 4:
+                                addressBook.SortByZip();
+                                break;
+                            default:
+                                Console.WriteLine("Sorry!!! Invalid Entry");
+                                break;
+                        }
                         break;
                     default:
                         Console.WriteLine("Sorry!!! Invalid Entry");
