@@ -32,7 +32,7 @@ namespace AddressBookDemo
             do
             {
                 Console.WriteLine($"Working On {bookName} AddressBook\n");
-                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Exit Application\n");
+                Console.WriteLine("Choose An Option \n1.Add New Contact \n2.Edit Existing Contact \n3.Delete A Contact \n4.View A Contact \n5.View All Contacts \n6.Add New AddressBook \n7.Switch AddressBook \n8.Search contact by city or state \n0.exit Application\n");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -66,17 +66,17 @@ namespace AddressBookDemo
                         
                         break;
                     case 2:
-                        Console.WriteLine("Enter First Name Of Contact To Edit :");
+                        Console.WriteLine("Enter Full Name Of Contact To Edit :");
                         string nameToEdit = Console.ReadLine();
                         addressBook.EditContact(nameToEdit,bookName);
                         break;
                     case 3:
-                        Console.WriteLine("Enter First Name Of Contact To Delete :");
+                        Console.WriteLine("Enter Full Name Of Contact To Delete :");
                         string nameToDelete = Console.ReadLine();
                         addressBook.DeleteContact(nameToDelete,bookName);
                         break;
                     case 4:
-                        Console.WriteLine("Enter First Name Of Contact To View :");
+                        Console.WriteLine("Enter Full Name Of Contact To View :");
                         string nameToView = Console.ReadLine();
                         addressBook.ViewContact(nameToView,bookName);
                         break;
@@ -116,7 +116,25 @@ namespace AddressBookDemo
                             }
                         }
                         break;
-                    
+                    case 8:
+                        Console.WriteLine("Would You Like To \n1.Search by city \n2.Search by state");
+                        int opt = Convert.ToInt32(Console.ReadLine());
+                        switch (opt)
+                        {
+                            case 1:
+                                Console.WriteLine("Enter name of city :");
+                                addressBook.SearchPersonByCity(Console.ReadLine());
+                                break;
+                            case 2:
+                                Console.WriteLine("Enter name of state :");
+                                addressBook.SearchPersonByState(Console.ReadLine());
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Input.Enter 1 or 2");
+                                break;
+                        }
+                        break;
+
                     default:
                         Console.WriteLine("Invalid Entry. Enter value between 0 to 7");
                         break;

@@ -15,7 +15,7 @@ namespace AddressBookDemo
            
             try {
                 Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
-                addressBookDictionary[bookName].addressBook.Add(contact.FirstName, contact);
+                addressBookDictionary[bookName].addressBook.Add(contact.FirstName + " " + contact.LastName, contact);
                 Console.WriteLine("\nAdded Succesfully. \n");
             }
             catch(Exception ex)
@@ -153,6 +153,38 @@ namespace AddressBookDemo
                 return true;
             }
             return false;
+        }
+        public List<Contact> GetListOfDictctionaryKeys2(Dictionary<string, Contact> d)
+        {
+            List<Contact> book = new List<Contact>();
+            foreach (var value in d.Values)
+            {
+                book.Add(value);
+            }
+            return book;
+        }
+
+        public void SearchPersonByCity(string city)
+        {
+            foreach (AddressBook addressbookobj in addressBookDictionary.Values)
+            {
+                List<Contact> contactList = GetListOfDictctionaryKeys2(addressbookobj.addressBook);
+                foreach (Contact contact in contactList.FindAll(c => c.City.Equals(city)).ToList())
+                {
+                    Console.WriteLine(contact.ToString());
+                }
+            }
+        }
+        public void SearchPersonByState(string state)
+        {
+            foreach (AddressBook addressbookobj in addressBookDictionary.Values)
+            {
+                List<Contact> contactList = GetListOfDictctionaryKeys2(addressbookobj.addressBook);
+                foreach (Contact contact in contactList.FindAll(c => c.State.Equals(state)).ToList())
+                {
+                    Console.WriteLine(contact.ToString());
+                }
+            }
         }
     }
 }
