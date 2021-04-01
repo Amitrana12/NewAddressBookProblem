@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AddressBookDemo
 {
@@ -7,18 +8,13 @@ namespace AddressBookDemo
     {
         private Dictionary<string, Contact> addressBook = new Dictionary<string, Contact>();   
         private Dictionary<string, AddressBook> addressBookDictionary = new Dictionary<string, AddressBook>();
+
         public void AddContact(string firstName, string lastName, string address, string city, string state, string email, int zip, long phoneNumber, string bookName)
         {
-            Contact contact = new Contact();
-            contact.FirstName = firstName;
-            contact.LastName = lastName;
-            contact.Address = address;
-            contact.City = city;
-            contact.State = state;
-            contact.Email = email;
-            contact.Zip = zip;
-            contact.PhoneNumber = phoneNumber;
+            
+           
             try {
+                Contact contact = new Contact(firstName, lastName, address, city, state, email, zip, phoneNumber);
                 addressBookDictionary[bookName].addressBook.Add(contact.FirstName, contact);
                 Console.WriteLine("\nAdded Succesfully. \n");
             }
@@ -136,6 +132,27 @@ namespace AddressBookDemo
         public Dictionary<string, AddressBook> GetAddressBook()
         {
             return addressBookDictionary;
+        }
+
+        public List<Contact> GetListOfDictctionaryKeys(string bookName)
+        {
+            List<Contact> book = new List<Contact>();
+            foreach (var value in addressBookDictionary[bookName].addressBook.Values)
+            {
+                book.Add(value);
+            }
+            return book;
+        }
+
+        public bool CheckDuplicateEntry(Contact c, string bookName)
+        {
+            List<Contact> book = GetListOfDictctionaryKeys(bookName);
+            if (book.Any(b => b.Equals(c)))
+            {
+                Console.WriteLine("Name already Exists.");
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -36,11 +36,20 @@ namespace AddressBookDemo
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
+                    case 0:
+                        Console.WriteLine("Thank You For Using Address Book System.");
+                        break;
                     case 1:
                         Console.WriteLine("Enter First Name :");
                         string firstName = Console.ReadLine();
                         Console.WriteLine("Enter Last Name :");
                         string lastName = Console.ReadLine();
+                        Contact temp = new Contact(firstName, lastName, null, null, null, null, 0, 0);
+                        if (addressBook.CheckDuplicateEntry(temp, bookName))
+                        {
+                            Console.WriteLine("sorry already person exit");
+                            break;
+                        }
                         Console.WriteLine("Enter Address :");
                         string address = Console.ReadLine();
                         Console.WriteLine("Enter City :");
@@ -107,8 +116,9 @@ namespace AddressBookDemo
                             }
                         }
                         break;
-                    case 0:
-                        Console.WriteLine("Thank You For Using Address Book System.");
+                    
+                    default:
+                        Console.WriteLine("Invalid Entry. Enter value between 0 to 7");
                         break;
                 }
             } while (choice != 0);
