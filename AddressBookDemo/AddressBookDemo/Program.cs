@@ -134,7 +134,6 @@ namespace AddressBookDemo
                                 break;
                         }
                         break;
-
                     default:
                         Console.WriteLine("Invalid Entry. Enter value between 0 to 7");
                         break;
