@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utility", "Utility", "{CC05B2B7-B03E-40E3-BA4C-44B04E035471}"
 	ProjectSection(SolutionItems) = preProject
 		AddressBookData.csv = AddressBookData.csv
+		AddressBookData.Json = AddressBookData.Json
 		AddressBookData.txt = AddressBookData.txt
 	EndProjectSection
 EndProject
